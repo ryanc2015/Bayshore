@@ -1,0 +1,32 @@
+﻿@model Bayshore.CodeTest.Models.IndexViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+    var mssg = Model.IsPalindrome ? "This number is a palindrome" : "This number is not a palindrome";
+}
+
+
+
+<h4>Palindrome Tester</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <p>Enter a positive number to check for a palindrome</p>
+        <form asp-controller="Home" asp-action="CheckForPalindrom" method="post">
+            <div class="form-group">
+                <label asp-for="Number" class="control-label"></label>
+                <input asp-for="Number" class="form-control" />
+                <span asp-validation-for="Number" class="text-danger"></span>
+                <br />
+                <input type="submit" name="submit" value="Submit" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@if (Model.TestComplete)
+{
+    <p id="mssg">@mssg</p>
+}
+
